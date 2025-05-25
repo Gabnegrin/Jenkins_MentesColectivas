@@ -1,6 +1,11 @@
-correr jenkins
+Construir jenkins
+	docker build -t jenkins .
+
+Correr jenkins
 	docker run --name jenkins-blueocean --restart=on-failure --detach --network jenkins -p 10000:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -u root jenkins
 
+Contrasena(no tengo la ~n en mi teclado)
+	docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
 
-Dirección del volumen para conectar a host
+Dirección del volumen para conectar a host (por si acaso quiere crear un agente cloud o algo asi?(no lo recomiendo la verdad))
 	unix:///var/run/docker.sock
